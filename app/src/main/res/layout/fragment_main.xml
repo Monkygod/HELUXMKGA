@@ -9,31 +9,56 @@
 
     <!--Content-->
     <LinearLayout
-        android:layout_margin="30dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:orientation="vertical">
 
 
         <!--Logo-->
         <ImageView
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logoa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logoa" />
         <!--App Name-->
         <TextView
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textSize="24sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:text="@string/app_name"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <!--User-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="User:"
+            android:inputType="text" />
+        <!--Password-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password:"
+            android:inputType="textPassword" />
+        <!--Login-->
+        <Button
+            android:text="Login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!--Register-->
+        <TextView
+            android:id="@+id/txtNewRegister"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:text="New Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <!--User-->
-        <!--Password-->
-        <!--Register-->
 
     </LinearLayout>
 </FrameLayout>
