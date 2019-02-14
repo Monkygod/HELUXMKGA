@@ -11,6 +11,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
+import java.util.IllegalFormatCodePointException;
 
 
 /**
@@ -29,7 +32,7 @@ public class RegisterFragment extends Fragment {
 
         //Create Toolbar
         Toolbar toolbar = getView().findViewById(R.id.toolbarRegister);
-        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.register));
 
@@ -48,6 +51,31 @@ public class RegisterFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.itemUpload) {
+
+//            Get Value From EditText
+            EditText nameEditText = getView().findViewById(R.id.edtName);
+            EditText userEditText = getView().findViewById(R.id.edtUser);
+            EditText passwordEditText = getView().findViewById(R.id.edtPassword);
+
+//             Change Type Data To String
+            String name = nameEditText.getText().toString().trim();
+            String user = nameEditText.getText().toString().trim();
+            String password = nameEditText.getText().toString().trim();
+
+//             Check Space
+            if (name.isEmpty() || user.isEmpty() || password.isEmpty()) {
+//                Have Space
+                MainAlert mainAlert = new MainAlert(getActivity());
+                mainAlert.normalDialog("Have Sapce","Please Fill All Blank");
+            } else {
+            }
+
+
+        }   // if
+
+
         return super.onOptionsItemSelected(item);
     }
 
