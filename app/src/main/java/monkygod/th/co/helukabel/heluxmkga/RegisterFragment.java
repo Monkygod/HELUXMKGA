@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -61,8 +62,8 @@ public class RegisterFragment extends Fragment {
 
 //             Change Type Data To String
             String name = nameEditText.getText().toString().trim();
-            String user = nameEditText.getText().toString().trim();
-            String password = nameEditText.getText().toString().trim();
+            String user = userEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
 
 //             Check Space
             if (name.isEmpty() || user.isEmpty() || password.isEmpty()) {
@@ -70,6 +71,27 @@ public class RegisterFragment extends Fragment {
                 MainAlert mainAlert = new MainAlert(getActivity());
                 mainAlert.normalDialog("Have Sapce","Please Fill All Blank");
             } else {
+                // No Space
+                try {
+                    MainConstant mainConstant = new MainConstant();
+                    AddUserThread addUserThread = new AddUserThread(getActivity());
+                    addUserThread.execute(name, user, password, mainConstant.getUrlAddUser());
+                    String result = addUserThread.get();
+                    Log.d("14Feb2019", "result = " + result);
+
+                    if (Boolean.parseBoolean(result)) {
+                        getActivity().getSupportFragmentManager().popBackStack();
+                    } else {
+                        MainAlert mainAlert = new MainAlert(getActivity());
+                        mainAlert.normalDialog("Cannot Register","Please Try Again");
+                    }
+
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+
             }
 
 
